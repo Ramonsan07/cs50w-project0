@@ -1,0 +1,643 @@
+/* google fonts import */
+/* podes usar un font-face pero ya google te da lo que necesitas*/
+@import URL('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* variables =====================================*/
+$body-font: 'Poppins', sans-serif;
+
+
+$header-height: 3rem;
+
+/* colors ========================= */
+$hue-color: 250;
+
+$bottom-background-color: #4FACF7;
+$first-color: hsl($hue-color, 69%, 61%); 
+$first-color-alt: hsl($hue-color, 57%, 53%);
+$fist-color-lighter: hsl($hue-color, 92%, 85%);
+$title-color: hsl($hue-color, 8%, 15%);
+$text-color: hsl($hue-color, 8%, 45%);
+$text-color-light: hsl($hue-color, 8%, 65%);
+$body-color: hsl($hue-color, 60%, 99%);
+$container-color: #fff;
+
+
+/* font sizes */
+
+$big-font-size: 2rem;
+$h1-font-size: 1.5rem;
+$h2-font-size: 1.25rem;
+$h3-font-size: 1.125rem;
+$normal-font-size: 0.938rem;
+$small-font-size: 0.813rem;
+$smaller-font-size: 0.75rem;
+
+/* font weight */
+
+$font-medium: 500;
+$font-semi-bold: 800;
+$font-big: 900;
+
+
+/* margenes bottom ======= will use bootstrap either way*/
+$mb-0-25: .25rem;
+$mb-0-5:.5rem;
+$mb-0-75:.75rem;
+$mb-1: 1rem;
+$mb-1-5: 1.5rem;
+$mb-2: 2rem;
+$mb-2-5: 2.5rem;
+$mb-3: 3rem;
+
+/* z index ==========*/
+
+$z-tooltip: 10;
+$z-fixed: 100;
+$z-modal: 1000;
+
+/* font size for large devices mixins might be the answer*/
+@media screen and (min-width: 986px){
+
+    $big-font-size: 3rem;
+    $h1-font-size: 2.5rem;
+    $h2-font-size: 1.5rem;
+    $h3-font-size: 1.25rem;
+    $normal-font-size: 1rem;
+    $small-font-size: 0.875rem;
+    $smaller-font-size: 0.813rem;
+
+}
+/*lo que deberias hacer qui es cambiar las propiedades de los elementos que allan heredado hasta esa momento las classes que son variables */
+
+/* BASE ================================== */
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: 0 0 0 0;
+    font-family: $body-font;
+    font-size: $normal-font-size;
+    background-color: $body-color;
+    color: $text-color;
+
+}
+
+main{
+
+    margin: 0;
+}
+
+h1,h2,h3,h4{
+    color: $title-color;
+    font-weight: $font-semi-bold;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+
+}
+
+/* reusable classes esto se puede hacer mejor con un mixing*/
+
+.section{
+    height: 100vh;
+    width: 100vw;
+}
+
+.section_title{
+    font-size: $h1-font-size;
+}
+
+.section_subtitle{
+    display: block;
+    font-size: $small-font-size;
+    margin-bottom: $mb-3;
+}
+
+.section_title, .section_subtitle{
+    text-align: center;
+}
+
+/* LAYOUT=====================*/
+
+//sobre escribiendo el margin por defecto que trae bootstrap.
+//no lo pude sobre escribir y me puso malo asi que solo hice otra clase.
+.container1{
+
+    margin-left: $mb-1-5;
+    margin-right: $mb-1-5;
+    max-width: 768px;
+
+}
+
+.grid{
+    display: grid;
+    gap: 1.5rem;
+
+}
+
+.header{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    // para cuando la caja .nav__menu se sobre ponga.
+    z-index: $z-fixed;
+    background-color: $body-color;
+
+}
+
+
+
+/* nav ==============*/
+.nav{
+    max-width: 968px;
+    height: $header-height;
+    display: flex;
+    //separando los 
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0 2.1rem;
+    //ocultando el nav bar inferior contra el celeste el background img.
+    background-color: $bottom-background-color;
+
+
+}
+
+.nav__logo, .nav__toggle{
+    color: $title-color;
+    font-weight: $font-medium;
+
+}
+
+.nav__logo:hover{
+    color: $first-color;
+}
+
+.nav__toggle{
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.nav__toggle:hover{
+    color: $first-color;
+}
+
+//sobre escribiendo el background color de los botones de bootstrap
+.btn{
+
+    background-color: $first-color-alt;
+    max-width: 20em;
+    padding: 20;
+}
+.btn:hover{
+    background-color: $first-color;
+}
+
+// 767px > | <
+@media screen and (max-width: 48em){
+    // se posiciona la caja abajo a la izquierda y se sobre pone a los demas elementos 
+    .nav__menu{
+        position: fixed;
+        //esto hace que el elemento se posicione totalmente debajo del viewport. (el % es con respecto al view port porque es fixed la position)
+        bottom: -35%;
+        left: 0;
+        width: 100%;
+        background-color: $bottom-background-color;
+        padding: 2rem 1.5rem 4rem;
+        box-shadow: 0 -1px 4px rgba($color: #000000, $alpha: 1.0);
+        border-radius: 1.5rem 1.5rem 0 0;
+        transition: 0.3s;
+    }
+
+}
+
+.nav__list{
+    @extend .grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    justify-content: center;
+}
+
+.nav__link{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: $small-font-size;
+    color: $title-color;
+    font-weight: $font-medium;
+
+}
+
+.nav__link:hover{
+    color: $first-color;
+
+}
+
+.nav__icon{
+    font-size: 1.2rem;
+
+}
+
+.nav__close{
+
+    position: absolute;
+    right: 1.3rem;
+    bottom: 1.3rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: $fist-color-lighter;
+    
+}
+
+.nav__close:hover{
+    color: $first-color;
+}
+
+//mostrar el menu cuando le des click a nav__close.
+.show__menu{
+    bottom: 0;
+}
+
+//home============== este elemento ya tiene la
+// propiedad grid con la clase grid en la linea 138
+
+.home__container{
+    @extend .grid;
+    gap: 1rem;
+    // este elemento tambien hereda grid esta rule solo le da las culumnas
+    .home__content{
+        @extend .grid;
+        grid-template-columns: 0.5fr 3fr;
+        padding-top: 1rem;
+        align-items: center;
+
+        //tiene display grid para que se coloquen en una columna.
+        .home__social{
+            display: grid;
+            grid-template-columns: 1fr;
+            place-items: center;
+            gap: 0;
+
+            .home__social-icon{
+                font-size: $big-font-size;
+                color: $first-color;
+            }
+            
+            .home__social-icon:hover{
+                color:$first-color;
+            }
+        }
+
+        .home__img{
+            width: 100%;
+            text-align: center;
+            min-width: 14em;
+        }
+
+        .home__img  img{
+            width:50%;
+            border-radius: 5rem;
+        }
+    
+        
+        //agarrando toda la segunda fila del grid creado en .home__content
+        .home__data{
+            grid-column: 1/3;
+
+            
+            .home__title{
+                font-size: $big-font-size;            
+
+            }
+            
+            //agregando estilo a mi nombre en el titulo.
+            .home__title::after{
+                content: "Ramón";
+                color: $first-color;
+            }
+            
+
+            .home__subtitle{
+                font-size: $h3-font-size;
+                color: $text-color;
+                font-weight: $font-medium;
+                margin-bottom: $mb-0-75;
+
+            }
+            //agregando un link al project0
+            .home__subtitle a::before{
+                content: "<a>project0</a>";
+                font-weight: $font-big;
+                font-size: $h1-font-size;
+                color: $first-color;
+                cursor: pointer;
+            }
+            .home__description{
+                margin-bottom: $mb-2;
+                font-weight: $font-semi-bold;
+
+            }
+
+            #btn-contactme{
+                text-align: center;
+                display: grid;
+                grid-template-columns: 1fr;
+                padding: 0;
+                gap: 0 0;
+                justify-content: center;
+                color: white;
+            }
+
+            
+
+            
+        }
+
+        //estilos del slider ve hacia abajo.
+        .home__scroll{
+
+            text-align: center;
+            
+            .home__scroll-button{
+
+                color:$first-color;
+                transition: 0.3s;
+ 
+                
+                //no tengo idea por que este p absolute hace que el translate se mueva.
+                position: absolute;
+
+                
+            }
+
+            .home__scroll-button:hover{
+                color: $fist-color-lighter;
+                transform: translateX(1.3rem);
+
+            }
+            .home__scroll-name{
+                font-size: $h3-font-size;
+                color: $title-color;
+                font-weight: $font-big;
+                margin-right: $mb-0-25;
+            }
+            
+            .home__scroll-arrow{
+                font-size: 1.4rem;
+            }
+            
+        }
+        
+    }
+}
+
+//acomodando el data para que tome dos celdas
+
+
+
+//anidando las rules de los elementos que son hijos de este div
+
+.container{
+    @extend .grid;
+
+    .about__img{
+        width: 20rem;
+        border-radius: 45%;
+        place-self: center;
+    }
+
+    .about__data{
+
+        .about__description{
+            text-align: center;
+            margin: $mb-2-5;
+        }
+    
+        .about__info{
+            //poniendo el los parrafos uno al lado el otro y espaciandolos.
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: $mb-2-5;
+            text-align: center;
+        
+            // hay que darle display block porque los spans que representan
+            // el title y el info se mezclarian adentro del div que los contiene
+            span{
+                display: block;
+            }
+            span.about__info-title{
+                font-size: $h2-font-size;
+                font-weight: $font-semi-bold;
+                color: $title-color;
+        
+            }
+        
+            span.about__info-name{
+                font-size: $small-font-size;
+            }
+        
+        }
+        
+    
+    }
+
+}
+
+
+
+//cuando la pantalla sea mas grande que el margin
+//del container va a posicionarlo en el centro.
+@media screen and (min-width: 768px) {
+    .container1{
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+
+// media queries.
+
+
+// para pequenios grandes.
+// 353px mas o menos
+@media screen and (max-width: 22em){
+
+    .nav__menu{
+        padding: 2.3rem 0.025rem 2rem;
+    }
+
+    .nav__list{
+        column-gap: 0;
+    }
+    #home-content{
+
+        grid-template-columns: 0.15fr, 3fr;
+
+    }
+
+    #home-description{
+        margin-bottom: 1rem;
+    }
+
+    #home{
+        .home__container{
+            padding: 0rem 0 0;
+        }
+    }   
+
+}
+
+//dispositivos medianos. 592px
+@media screen and (min-width: 37em) {
+    //los anido asi por la especificidas que cree arriba.
+    #home-content{
+        grid-template-columns: 0.25fr 1fr 1fr;
+        grid-template-rows:0.3fr 1fr;
+
+        .home__data{
+            grid-column: initial;
+            grid-column: 2/3;
+            grid-row: 1/3;
+          
+        }
+        .home__img{
+            grid-column: 3/4;
+            grid-row: 1/2;
+            max-width: 28em;
+        }
+
+        .home__scroll{
+            display: block;
+            grid-column: 3/4;
+            grid-row: 2/3;
+            place-content: center;
+            bottom: 0;
+        } 
+
+
+
+    }
+
+    .home__container{
+        padding: 3rem 0 3rem;
+    }
+
+
+
+
+    
+}
+
+//dispositivos medianos-grandes. 767px > | <
+@media screen and (min-width: 48em) {
+    
+    .container1{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+     
+    .header{
+        top: 0;
+        bottom: initial;
+
+    }
+
+    .nav{
+
+        background-color: #dadada;
+        padding-top: 1em;
+    }
+
+    //acomodando los items a la iquerda del header.
+    .nav__menu{
+        margin-left: auto;
+    }
+
+
+    .header{
+        background-color: #dadada;
+    }
+
+
+    .nav__list{
+        grid-template-columns: repeat(3, 1fr);
+        margin: 0;
+    }
+
+    .nav__close{
+        visibility: hidden;
+    }
+
+    .nav__toggle{
+        visibility: hidden;
+    }
+
+    .home__container{
+        padding: 6rem 0 5rem;
+    }
+
+
+}
+
+
+//pantallas grandes 1024px.
+@media screen and (min-width: 64em) {
+    .container1{
+        max-width: 64em;
+    }
+}
+
+// esto lo encontre en este video. https://www.youtube.com/watch?v=lPJVi797Uy0&t=515s
+.spacer1{
+    aspect-ratio: 960/360;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.layer1{
+    background-image: url(assets/img/layered-waves-haikeiD.svg);
+}
+
+
+.contact{
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
+
+    .table__container{
+        margin: 1em;
+    }
+    
+}
+
+.col-6{
+
+    span{
+        display: block;
+    }
+}

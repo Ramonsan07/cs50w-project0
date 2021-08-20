@@ -1,0 +1,107 @@
+<html lang="en">
+<head>
+    <!--bootstrap css-->    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--fontawsome script-->
+    <script src="https://kit.fontawesome.com/afaa436188.js" crossorigin="anonymous"></script>
+    <!-- main CSS -->
+    <link rel="stylesheet" href="css/css.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- header -->
+    <header class="header" id="header">
+        <nav class="nav container1">
+
+            <a href="index.html" class="nav__logo">Ramon</a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list grid">
+
+                    <li class="nav__item">
+                        <a href="index.html" class="nav__link">
+                            <i class="fas fa-home nav__icon"></i>
+                            Home
+                        </a>
+                    </li> 
+                    <li class="nav__item">
+                        <a href="about.html" class="nav__link">
+                            <i class="fas fa-user nav__icon"></i>
+                            Acerca De Mi
+                        </a>
+                    </li> 
+
+
+                    <li class="nav__item">
+                        <a href="contact.html" class="nav__link">
+                            <i class="fas fa-comments nav__icon"></i>
+                            Contáctame
+                        </a>
+                    </li>
+
+                    
+                </ul>
+
+                <i class="fas fa-times nav__close" id="nav__close"></i>
+
+            </div>
+            <div class="nav__btns">
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="fas fa-th-large"></i>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <!--    ABOUT SECTION    -->
+    <section class="about section spacer1 layer1 pt-5" id="about">
+        <h2 class="section_title">que hay sobre mi?</h2>
+        <!--bootstrap grid layout-->
+        <div class="container">
+
+            <div class="row justify-content-evenly align-content-center">
+                <img src="assets/img/perfil.jpg" alt="" class="about__img col-8">
+            </div>
+            
+            <div class="row">
+                <p class="col-12 justify-content-evenly align-content-center text-center">
+                    Soy un estudiante de ingenieria de sistemas. Actualmente estoy en 4to año de la carrera.
+                </p>
+                <div class="about__info row text-center">
+                    <div class="col-6">
+                        <span class="about__info-title fw-bolder">actividad Favorita</span>
+                        <span class="about__info-name"> Jugar Futbol <br> </span>
+                    </div>
+                    
+                    <div class="col-6">
+                        <span class="about__info-title fw-bolder">Mi sueño</span>
+                        <span class="about__info-name"> Ir de pesca. <br></span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="home__scroll row justify-content-evenly">
+                <a href="contact.html" class="btn btn-info home__scroll-button button--flex ">
+                    <span class="home__scroll-name ">Siguiente</span>
+                    <i class="fas fa-arrow-right home__scroll-arrow"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script src="js/main.js"></script>
+
+
+
+</body>
+</html>
